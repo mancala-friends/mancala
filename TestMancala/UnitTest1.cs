@@ -17,5 +17,12 @@ namespace TestMancala
         {
             Assert.IsTrue(2 == 2);
         }
+
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            Assert.IsTrue(5 == 5);
+        }
     }
 }
