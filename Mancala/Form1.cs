@@ -21,5 +21,15 @@ namespace Mancala
         {
 
         }
+
+        private void onePlayerButton_Click(object sender, EventArgs e)
+        {
+            mancalaTabs.SelectedTab = gameTab;
+        }
+
+        private void networkButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
