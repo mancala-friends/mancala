@@ -13,7 +13,7 @@ namespace Mancala
     public partial class Form1 : Form
     {
         /// <summary>
-        /// This creats the form and starts the player at the Menu tab.
+        /// This creates the form and starts the player at the Menu tab.
         /// </summary>
         public Form1()
         {
