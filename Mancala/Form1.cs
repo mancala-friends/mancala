@@ -16,5 +16,20 @@ namespace Mancala
         {
             InitializeComponent();
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void onePlayerButton_Click(object sender, EventArgs e)
+        {
+            mancalaTabs.SelectedTab = gameTab;
+        }
+
+        private void networkButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
