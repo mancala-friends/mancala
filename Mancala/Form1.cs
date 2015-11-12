@@ -21,7 +21,13 @@ namespace Mancala
             mancalaTabs.SelectedTab = menuTab;
         }
 
-        private void createPlayerPits(int yPosition)
+        private class Pit
+        {
+            public int Player { get; set; }
+            public int Location { get; set; }
+        }
+
+        private void createPlayerPits(int yPosition, int player)
         {
             for (int i = 1; i <= 6; i++)
             {
@@ -32,11 +38,20 @@ namespace Mancala
                     Image = Mancala.Properties.Resources.pit,
                     Size = Mancala.Properties.Resources.pit.Size,
                     BackColor = Color.Transparent,
-                    Visible = true
+                    Visible = true,
+                    Tag = new Pit { Player=player, Location=i}
                 };
+
+                picture.MouseClick += pitClicked;
 
                 boardBox.Controls.Add(picture);
             }
+        }
+
+        private void pitClicked(object sender, MouseEventArgs e)
+        {
+            Pit pit = (Pit) ((Control) sender).Tag;
+            Console.WriteLine("I see player {0}'s pit {1}!", pit.Player, pit.Location);
         }
 
         private void createPlayerStore(int xPosition, int player)
@@ -60,8 +75,8 @@ namespace Mancala
         /// <param name="e"></param>
         private void createPits(object sender, EventArgs e)
         {
-            createPlayerPits(20);
-            createPlayerPits(175);
+            createPlayerPits(20, 2);
+            createPlayerPits(175, 1);
             createPlayerStore(10, 2);
             createPlayerStore(boardBox.Width - 100, 1);
         }
