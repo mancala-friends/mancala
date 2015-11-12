@@ -19,6 +19,7 @@ namespace Mancala
         {
             InitializeComponent();
             mancalaTabs.SelectedTab = menuTab;
+            mancalaTabs.TabPages.Remove(gameTab);
         }
 
 
@@ -29,7 +30,9 @@ namespace Mancala
         /// <param name="e"></param>
         private void onePlayerButton_Click(object sender, EventArgs e)
         {
+            mancalaTabs.TabPages.Add(gameTab);
             mancalaTabs.SelectedTab = gameTab;
+            mancalaTabs.TabPages.Remove(menuTab);
 
             // TODO: Start a one player vs AI game
         }
@@ -52,7 +55,10 @@ namespace Mancala
         /// <param name="e"></param>
         private void twoPlayerButton_Click(object sender, EventArgs e)
         {
+            mancalaTabs.TabPages.Add(gameTab);
             mancalaTabs.SelectedTab = gameTab;
+            mancalaTabs.TabPages.Remove(menuTab);
+
 
             // TODO: Start a two player game. User vs User
         }
@@ -75,8 +81,10 @@ namespace Mancala
         private void backButton_Click(object sender, EventArgs e)
         {
             //TODO: End the current game and then go back to main menu
-
+            mancalaTabs.TabPages.Add(menuTab);
             mancalaTabs.SelectedTab = menuTab;
+            mancalaTabs.TabPages.Remove(gameTab);
+
         }
 
         /// <summary>
@@ -86,6 +94,30 @@ namespace Mancala
         /// <param name="e"></param>
         private void infoButton_Click(object sender, EventArgs e)
         {
+
+        }
+
+
+        /// <summary>
+        /// This function pops up a window showing the instructions for playing the game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void instructionButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
+        /// This funciton pops up a window showing information about the game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            aboutForm about = new aboutForm();
+            about.Show();
 
         }
     }

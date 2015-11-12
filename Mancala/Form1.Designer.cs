@@ -155,6 +155,7 @@
             this.aboutButton.TabIndex = 4;
             this.aboutButton.Text = "About";
             this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // instructionButton
             // 
@@ -164,6 +165,7 @@
             this.instructionButton.TabIndex = 3;
             this.instructionButton.Text = "Instructions";
             this.instructionButton.UseVisualStyleBackColor = true;
+            this.instructionButton.Click += new System.EventHandler(this.instructionButton_Click);
             // 
             // networkButton
             // 
