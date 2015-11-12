@@ -35,7 +35,7 @@
             this.gameTab = new System.Windows.Forms.TabPage();
             this.infoButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.boardBox = new System.Windows.Forms.PictureBox();
             this.menuTab = new System.Windows.Forms.TabPage();
             this.titleLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             this.onePlayerButton = new System.Windows.Forms.Button();
             this.mancalaTabs.SuspendLayout();
             this.gameTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardBox)).BeginInit();
             this.menuTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@
             // 
             this.gameTab.Controls.Add(this.infoButton);
             this.gameTab.Controls.Add(this.backButton);
-            this.gameTab.Controls.Add(this.pictureBox1);
+            this.gameTab.Controls.Add(this.boardBox);
             this.gameTab.Location = new System.Drawing.Point(4, 22);
             this.gameTab.Name = "gameTab";
             this.gameTab.Padding = new System.Windows.Forms.Padding(3);
@@ -100,15 +100,15 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // pictureBox1
+            // boardBox
             // 
-            this.pictureBox1.Image = global::Mancala.Properties.Resources.board;
-            this.pictureBox1.InitialImage = global::Mancala.Properties.Resources.board;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 96);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(708, 302);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.boardBox.Image = global::Mancala.Properties.Resources.board;
+            this.boardBox.InitialImage = global::Mancala.Properties.Resources.board;
+            this.boardBox.Location = new System.Drawing.Point(37, 96);
+            this.boardBox.Name = "boardBox";
+            this.boardBox.Size = new System.Drawing.Size(708, 302);
+            this.boardBox.TabIndex = 3;
+            this.boardBox.TabStop = false;
             // 
             // menuTab
             // 
@@ -203,9 +203,10 @@
             this.Controls.Add(this.mancalaTabs);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.createPits);
             this.mancalaTabs.ResumeLayout(false);
             this.gameTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardBox)).EndInit();
             this.menuTab.ResumeLayout(false);
             this.menuTab.PerformLayout();
             this.ResumeLayout(false);
@@ -219,7 +220,7 @@
         private System.Windows.Forms.TabPage gameTab;
         private System.Windows.Forms.Button infoButton;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox boardBox;
         private System.Windows.Forms.TabPage menuTab;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button aboutButton;
