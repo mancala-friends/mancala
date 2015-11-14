@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class rules
+public class Rules
 {
-    private gameState gamestate;
+    public GameState gamestate;
 
     public bool tryMove(int pit)
     {
@@ -151,12 +151,12 @@ public class rules
 
     }
 
-    public gameState getGamestate() { return gamestate; }
+    public GameState getGamestate() { return gamestate; }
 
     
-	public rules()
+	public Rules()
 	{
-        gamestate = new gameState();
+        gamestate = new GameState();
 	}
 
  

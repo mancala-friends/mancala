@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class gameState
+public class GameState
 {
 
     public int[] playerOne;
@@ -21,7 +21,7 @@ public class gameState
     }
     
 
-    public gameState()
+    public GameState()
 	{
         playerOne = new int[7] { 4, 4, 4, 4, 4, 4, 0 };
         playerTwo = new int[7] { 4, 4, 4, 4, 4, 4, 0 };
