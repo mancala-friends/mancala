@@ -102,6 +102,44 @@ namespace Mancala
 
             createPlayerStore(boardBox.Width - 100, 1);
             createPlayerStore(10, 2);
+
+            var gameState = new GameState();
+            render(gameState);
+        }
+
+        private void render(GameState gameState)
+        {
+            render(gameState.playerOne, 1);
+            render(gameState.playerTwo, 2);
+        }
+
+        private Point scatter(int pebbleIndex, Size pebbleSize, Size pitSize)
+        {
+            int offset = 10;
+            int padding = 5;
+            int width = offset + (pebbleSize.Width + padding) * (pebbleIndex % 2);
+            int height = offset + (pebbleIndex /2) * (pebbleSize.Height + padding);
+            return new Point(width, height);
+        }
+        private void render(int[] player, int playerId)
+        {
+            for(var i = 0; i < 6; i++)
+            {
+                pitPictureBoxes[playerId][i].Controls.Clear();
+                for(var j = 0; j < player[i]; j++)
+                {
+                    PictureBox pebble = new PictureBox
+                    {
+                        Name = "Pebble",                 
+                        Image = Mancala.Properties.Resources.pebble_magenta,
+                        Size = Mancala.Properties.Resources.pebble_magenta.Size,
+                        BackColor = Color.Transparent,
+                        Visible = true
+                    };
+                    pebble.Location = scatter(j, pebble.Size, pitPictureBoxes[playerId][i].Size);
+                    pitPictureBoxes[playerId][i].Controls.Add(pebble);
+                }
+            }
         }
 
 
