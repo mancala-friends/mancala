@@ -28,6 +28,7 @@ namespace Mancala
         }
 
         private Dictionary<int, List<PictureBox>> pitPictureBoxes = new Dictionary<int, List<PictureBox>>();
+        private Rules rules = new Rules();
 
         private List<PictureBox> createPlayerPits(int xPosition, int yPosition, int step, int player)
         {
@@ -68,21 +69,28 @@ namespace Mancala
         {
             Pit pit = (Pit) ((Control) sender).Tag;
             Console.WriteLine("I see player {0}'s pit {1}!", pit.Player, pit.Location);
+            Console.WriteLine("Player {0} clicked pit {1} when it was player {2}'s turn: ", pit.Player, pit.Location, rules.getGamestate().currentPlayer);
+            var gameState = rules.getGamestate();
+            if (pit.Player == gameState.currentPlayer)
+            {
+                rules.tryMove(pit.Location);
+                render(gameState);
+            }
         }
 
-        private void createPlayerStore(int xPosition, int player)
+        private PictureBox createPlayerStore(int xPosition, int yPosition, int player)
         {
             PictureBox picture = new PictureBox
             {
                 Name = "Store" + player,
-                Location = new Point(xPosition, 20),
+                Location = new Point(xPosition, yPosition),
                 Image = Mancala.Properties.Resources.store,
                 Size = Mancala.Properties.Resources.store.Size,
                 BackColor = Color.Transparent,
                 Visible = true
             };
 
-            boardBox.Controls.Add(picture);
+            return picture;
         }
         /// <summary>
         /// 
@@ -97,14 +105,12 @@ namespace Mancala
             int p1 = 1;
             int p2 = 2;
             pitPictureBoxes[p1] = createPlayerPits(xOffset, 175, Mancala.Properties.Resources.pit.Width + 10, p1);
+            pitPictureBoxes[p1].Add(createPlayerStore(boardBox.Width - 100, 20, p1));
             pitPictureBoxes[p2] = createPlayerPits(boardWidth - pitWidth - xOffset, 20, -(pitWidth + 10), p2);
+            pitPictureBoxes[p2].Add(createPlayerStore(10, 20, p2));
             setUpPits(pitPictureBoxes);
 
-            createPlayerStore(boardBox.Width - 100, 1);
-            createPlayerStore(10, 2);
-
-            var gameState = new GameState();
-            render(gameState);
+            render(rules.getGamestate());
         }
 
         private void render(GameState gameState)
@@ -123,7 +129,7 @@ namespace Mancala
         }
         private void render(int[] player, int playerId)
         {
-            for(var i = 0; i < 6; i++)
+            for(var i = 0; i < player.Length; i++)
             {
                 pitPictureBoxes[playerId][i].Controls.Clear();
                 for(var j = 0; j < player[i]; j++)
