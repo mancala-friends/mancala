@@ -27,11 +27,11 @@ namespace Mancala
             public int Location { get; set; }
         }
 
-        private Dictionary<int, Dictionary<int, PictureBox>> pitPictureBoxes = new Dictionary<int, Dictionary<int, PictureBox>>();
+        private Dictionary<int, List<PictureBox>> pitPictureBoxes = new Dictionary<int, List<PictureBox>>();
 
-        private Dictionary<int, PictureBox> createPlayerPits(int xPosition, int yPosition, int step, int player)
+        private List<PictureBox> createPlayerPits(int xPosition, int yPosition, int step, int player)
         {
-            var pitImages = new Dictionary<int, PictureBox>();
+            var pitImages = new List<PictureBox>();
             for (int i = 1; i <= 6; i++)
             {
                 var picture = new PictureBox
@@ -47,19 +47,19 @@ namespace Mancala
 
                 picture.MouseClick += pitClicked;
 
-                pitImages[i] = picture;
+                pitImages.Add(picture);
             }
 
             return pitImages;
         }
 
-        private void setUpPits(Dictionary<int, Dictionary<int, PictureBox>> playerSides)
+        private void setUpPits(Dictionary<int, List<PictureBox>> playerSides)
         {
-            foreach (KeyValuePair<int, Dictionary<int, PictureBox>> side in playerSides)
+            foreach (var side in playerSides)
             {
-                foreach (KeyValuePair<int, PictureBox> pit in side.Value)
+                foreach (var pit in side.Value)
                 {
-                    boardBox.Controls.Add(pit.Value);
+                    boardBox.Controls.Add(pit);
                 }
             }
         }
