@@ -60,6 +60,9 @@ namespace Mancala
             mancalaTabs.TabPages.Remove(menuTab);
 
 
+
+
+
             // TODO: Start a two player game. User vs User
         }
 
