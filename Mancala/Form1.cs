@@ -22,69 +22,6 @@ namespace Mancala
             mancalaTabs.TabPages.Remove(gameTab);
         }
 
-        private class Pit
-        {
-            public int Player { get; set; }
-            public int Location { get; set; }
-        }
-
-        private void createPlayerPits(int yPosition, int player)
-        {
-            for (int i = 1; i <= 6; i++)
-            {
-                PictureBox picture = new PictureBox
-                {
-                    Name = "Pit" + i,
-                    Location = new Point((int)(27 + i * boardBox.Width / 8.5), yPosition),
-                    Image = Mancala.Properties.Resources.pit,
-                    Size = Mancala.Properties.Resources.pit.Size,
-                    BackColor = Color.Transparent,
-                    Visible = true,
-                    Tag = new Pit { Player = player, Location = i }
-                };
-
-                picture.MouseClick += pitClicked;
-
-                boardBox.Controls.Add(picture);
-            }
-        }
-
-        private void pitClicked(object sender, MouseEventArgs e)
-        {
-            Pit pit = (Pit)((Control)sender).Tag;
-            Console.WriteLine("I see player {0}'s pit {1}!", pit.Player, pit.Location);
-        }
-
-        private void createPlayerStore(int xPosition, int player)
-        {
-            PictureBox picture = new PictureBox
-            {
-                Name = "Store" + player,
-                Location = new Point(xPosition, 20),
-                Image = Mancala.Properties.Resources.store,
-                Size = Mancala.Properties.Resources.store.Size,
-                BackColor = Color.Transparent,
-                Visible = true
-            };
-
-            boardBox.Controls.Add(picture);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void createPits(object sender, EventArgs e)
-        {
-            createPlayerPits(20, 2);
-            createPlayerPits(175, 1);
-            createPlayerStore(10, 2);
-            createPlayerStore(boardBox.Width - 100, 1);
-        }
-
-
-
-
 
 
         /// <summary>
