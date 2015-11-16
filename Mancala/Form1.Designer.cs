@@ -33,9 +33,11 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.mancalaTabs = new System.Windows.Forms.TabControl();
             this.gameTab = new System.Windows.Forms.TabPage();
+            this.player1Label = new System.Windows.Forms.Label();
+            this.player2Label = new System.Windows.Forms.Label();
             this.infoButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.boardBox = new System.Windows.Forms.PictureBox();
             this.menuTab = new System.Windows.Forms.TabPage();
             this.titleLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
@@ -44,11 +46,9 @@
             this.networkButton = new System.Windows.Forms.Button();
             this.twoPlayerButton = new System.Windows.Forms.Button();
             this.onePlayerButton = new System.Windows.Forms.Button();
-            this.player2Label = new System.Windows.Forms.Label();
-            this.player1Label = new System.Windows.Forms.Label();
             this.mancalaTabs.SuspendLayout();
             this.gameTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardBox)).BeginInit();
             this.menuTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             this.gameTab.Controls.Add(this.player2Label);
             this.gameTab.Controls.Add(this.infoButton);
             this.gameTab.Controls.Add(this.backButton);
-            this.gameTab.Controls.Add(this.pictureBox1);
+            this.gameTab.Controls.Add(this.boardBox);
             this.gameTab.Location = new System.Drawing.Point(4, 22);
             this.gameTab.Name = "gameTab";
             this.gameTab.Padding = new System.Windows.Forms.Padding(3);
@@ -83,6 +83,26 @@
             this.gameTab.TabIndex = 0;
             this.gameTab.Text = "Game";
             this.gameTab.UseVisualStyleBackColor = true;
+            // 
+            // player1Label
+            // 
+            this.player1Label.AutoSize = true;
+            this.player1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1Label.Location = new System.Drawing.Point(632, 427);
+            this.player1Label.Name = "player1Label";
+            this.player1Label.Size = new System.Drawing.Size(113, 31);
+            this.player1Label.TabIndex = 7;
+            this.player1Label.Text = "Player 1";
+            // 
+            // player2Label
+            // 
+            this.player2Label.AutoSize = true;
+            this.player2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player2Label.Location = new System.Drawing.Point(31, 37);
+            this.player2Label.Name = "player2Label";
+            this.player2Label.Size = new System.Drawing.Size(113, 31);
+            this.player2Label.TabIndex = 6;
+            this.player2Label.Text = "Player 2";
             // 
             // infoButton
             // 
@@ -104,15 +124,15 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // pictureBox1
+            // boardBox
             // 
-            this.pictureBox1.Image = global::Mancala.Properties.Resources.board;
-            this.pictureBox1.InitialImage = global::Mancala.Properties.Resources.board;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 96);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(708, 302);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.boardBox.Image = global::Mancala.Properties.Resources.board;
+            this.boardBox.InitialImage = global::Mancala.Properties.Resources.board;
+            this.boardBox.Location = new System.Drawing.Point(37, 96);
+            this.boardBox.Name = "boardBox";
+            this.boardBox.Size = new System.Drawing.Size(708, 302);
+            this.boardBox.TabIndex = 3;
+            this.boardBox.TabStop = false;
             // 
             // menuTab
             // 
@@ -201,26 +221,6 @@
             this.onePlayerButton.UseVisualStyleBackColor = true;
             this.onePlayerButton.Click += new System.EventHandler(this.onePlayerButton_Click);
             // 
-            // player2Label
-            // 
-            this.player2Label.AutoSize = true;
-            this.player2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player2Label.Location = new System.Drawing.Point(31, 37);
-            this.player2Label.Name = "player2Label";
-            this.player2Label.Size = new System.Drawing.Size(113, 31);
-            this.player2Label.TabIndex = 6;
-            this.player2Label.Text = "Player 2";
-            // 
-            // player1Label
-            // 
-            this.player1Label.AutoSize = true;
-            this.player1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player1Label.Location = new System.Drawing.Point(632, 427);
-            this.player1Label.Name = "player1Label";
-            this.player1Label.Size = new System.Drawing.Size(113, 31);
-            this.player1Label.TabIndex = 7;
-            this.player1Label.Text = "Player 1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,7 +232,7 @@
             this.mancalaTabs.ResumeLayout(false);
             this.gameTab.ResumeLayout(false);
             this.gameTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardBox)).EndInit();
             this.menuTab.ResumeLayout(false);
             this.menuTab.PerformLayout();
             this.ResumeLayout(false);
@@ -246,7 +246,7 @@
         private System.Windows.Forms.TabPage gameTab;
         private System.Windows.Forms.Button infoButton;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox boardBox;
         private System.Windows.Forms.TabPage menuTab;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button aboutButton;
