@@ -27,11 +27,14 @@ namespace Mancala
             public int Location { get; set; }
         }
 
-        private void createPlayerPits(int xPosition, int yPosition, int step, int player)
+        private Dictionary<int, Dictionary<int, PictureBox>> pitPictureBoxes = new Dictionary<int, Dictionary<int, PictureBox>>();
+
+        private Dictionary<int, PictureBox> createPlayerPits(int xPosition, int yPosition, int step, int player)
         {
+            var pitImages = new Dictionary<int, PictureBox>();
             for (int i = 1; i <= 6; i++)
             {
-                PictureBox picture = new PictureBox
+                var picture = new PictureBox
                 {
                     Name = "Pit" + i,
                     Location = new Point((int) (xPosition + i * step), yPosition),
@@ -44,7 +47,20 @@ namespace Mancala
 
                 picture.MouseClick += pitClicked;
 
-                boardBox.Controls.Add(picture);
+                pitImages[i] = picture;
+            }
+
+            return pitImages;
+        }
+
+        private void setUpPits(Dictionary<int, Dictionary<int, PictureBox>> playerSides)
+        {
+            foreach (KeyValuePair<int, Dictionary<int, PictureBox>> side in playerSides)
+            {
+                foreach (KeyValuePair<int, PictureBox> pit in side.Value)
+                {
+                    boardBox.Controls.Add(pit.Value);
+                }
             }
         }
 
@@ -78,8 +94,12 @@ namespace Mancala
             int boardWidth = Mancala.Properties.Resources.board.Width;
             int pitWidth = Mancala.Properties.Resources.pit.Width;
             int xOffset = 27;
-            createPlayerPits(xOffset, 175, Mancala.Properties.Resources.pit.Width + 10, 1);
-            createPlayerPits(boardWidth - pitWidth - xOffset, 20, -(pitWidth + 10), 2);
+            int p1 = 1;
+            int p2 = 2;
+            pitPictureBoxes[p1] = createPlayerPits(xOffset, 175, Mancala.Properties.Resources.pit.Width + 10, p1);
+            pitPictureBoxes[p2] = createPlayerPits(boardWidth - pitWidth - xOffset, 20, -(pitWidth + 10), p2);
+            setUpPits(pitPictureBoxes);
+
             createPlayerStore(boardBox.Width - 100, 1);
             createPlayerStore(10, 2);
         }
