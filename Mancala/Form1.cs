@@ -27,14 +27,14 @@ namespace Mancala
             public int Location { get; set; }
         }
 
-        private void createPlayerPits(int yPosition, int player)
+        private void createPlayerPits(int xPosition, int yPosition, int step, int player)
         {
             for (int i = 1; i <= 6; i++)
             {
                 PictureBox picture = new PictureBox
                 {
                     Name = "Pit" + i,
-                    Location = new Point((int) (27 + i * boardBox.Width / 8.5), yPosition),
+                    Location = new Point((int) (xPosition + i * step), yPosition),
                     Image = Mancala.Properties.Resources.pit,
                     Size = Mancala.Properties.Resources.pit.Size,
                     BackColor = Color.Transparent,
@@ -75,10 +75,13 @@ namespace Mancala
         /// <param name="e"></param>
         private void createPits(object sender, EventArgs e)
         {
-            createPlayerPits(20, 2);
-            createPlayerPits(175, 1);
-            createPlayerStore(10, 2);
+            int boardWidth = Mancala.Properties.Resources.board.Width;
+            int pitWidth = Mancala.Properties.Resources.pit.Width;
+            int xOffset = 27;
+            createPlayerPits(xOffset, 175, Mancala.Properties.Resources.pit.Width + 10, 1);
+            createPlayerPits(boardWidth - pitWidth - xOffset, 20, -(pitWidth + 10), 2);
             createPlayerStore(boardBox.Width - 100, 1);
+            createPlayerStore(10, 2);
         }
 
 
