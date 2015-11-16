@@ -44,6 +44,8 @@
             this.networkButton = new System.Windows.Forms.Button();
             this.twoPlayerButton = new System.Windows.Forms.Button();
             this.onePlayerButton = new System.Windows.Forms.Button();
+            this.player2Label = new System.Windows.Forms.Label();
+            this.player1Label = new System.Windows.Forms.Label();
             this.mancalaTabs.SuspendLayout();
             this.gameTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,6 +71,8 @@
             // 
             // gameTab
             // 
+            this.gameTab.Controls.Add(this.player1Label);
+            this.gameTab.Controls.Add(this.player2Label);
             this.gameTab.Controls.Add(this.infoButton);
             this.gameTab.Controls.Add(this.backButton);
             this.gameTab.Controls.Add(this.pictureBox1);
@@ -197,6 +201,26 @@
             this.onePlayerButton.UseVisualStyleBackColor = true;
             this.onePlayerButton.Click += new System.EventHandler(this.onePlayerButton_Click);
             // 
+            // player2Label
+            // 
+            this.player2Label.AutoSize = true;
+            this.player2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player2Label.Location = new System.Drawing.Point(31, 37);
+            this.player2Label.Name = "player2Label";
+            this.player2Label.Size = new System.Drawing.Size(113, 31);
+            this.player2Label.TabIndex = 6;
+            this.player2Label.Text = "Player 2";
+            // 
+            // player1Label
+            // 
+            this.player1Label.AutoSize = true;
+            this.player1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1Label.Location = new System.Drawing.Point(632, 427);
+            this.player1Label.Name = "player1Label";
+            this.player1Label.Size = new System.Drawing.Size(113, 31);
+            this.player1Label.TabIndex = 7;
+            this.player1Label.Text = "Player 1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +231,7 @@
             this.Text = "Form1";
             this.mancalaTabs.ResumeLayout(false);
             this.gameTab.ResumeLayout(false);
+            this.gameTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuTab.ResumeLayout(false);
             this.menuTab.PerformLayout();
@@ -230,6 +255,8 @@
         private System.Windows.Forms.Button twoPlayerButton;
         private System.Windows.Forms.Button onePlayerButton;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label player1Label;
+        private System.Windows.Forms.Label player2Label;
     }
 }
 

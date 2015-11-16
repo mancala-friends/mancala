@@ -59,11 +59,24 @@ namespace Mancala
             mancalaTabs.SelectedTab = gameTab;
             mancalaTabs.TabPages.Remove(menuTab);
 
-
-
-
-
             // TODO: Start a two player game. User vs User
+
+            GameState game = new GameState();
+            Rules gameRules = new Rules();
+            Console.Write(game.currentPlayer);
+
+            if(game.currentPlayer == 1)
+            {
+                player1Label.Font = new Font(player1Label.Font, FontStyle.Italic);
+                player2Label.Font = new Font(player2Label.Font, FontStyle.Regular);
+                
+            }else
+            {
+                player2Label.Font = new Font(player2Label.Font, FontStyle.Italic);
+                player1Label.Font = new Font(player1Label.Font, FontStyle.Regular);
+            }
+
+
         }
 
         /// <summary>
