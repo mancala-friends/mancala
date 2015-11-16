@@ -62,10 +62,12 @@ namespace Mancala
 
             // TODO: Start a two player game. User vs User
 
+            //Creates a new game and rules and writes the player turn to the console.
             GameState game = new GameState();
             Rules gameRules = new Rules();
             Console.Write(game.currentPlayer);
 
+            // Labels which players turn it is by italicised letters
             if(game.currentPlayer == 1)
             {
                 player1Label.Font = new Font(player1Label.Font, FontStyle.Italic);
