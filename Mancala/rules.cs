@@ -36,7 +36,7 @@ public class Rules
             }
         }
 
-        
+
     }
 
     private bool movePlayerOne(int pit)
@@ -157,14 +157,11 @@ public class Rules
 
     public GameState getGamestate() { return gamestate; }
 
-    
+
 	public Rules()
 	{
         gamestate = new GameState();
 	}
 
- 
+
 }
-
-
-
