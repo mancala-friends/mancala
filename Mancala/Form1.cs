@@ -77,6 +77,12 @@ namespace Mancala
             {
                 rules.tryMove(pit.Location);
                 render(gameState);
+                if(gameState.isOver())
+                {
+                    gameOverScreen gameOverView = new gameOverScreen();
+                    gameOverView.Show();
+                    backButton_Click(sender, e);
+                }
             }
         }
 
