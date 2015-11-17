@@ -33,7 +33,7 @@ namespace Mancala
         private List<PictureBox> createPlayerPits(int xPosition, int yPosition, int step, int player)
         {
             var pitImages = new List<PictureBox>();
-            for (int i = 1; i <= 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 var picture = new PictureBox
                 {
@@ -101,7 +101,7 @@ namespace Mancala
         {
             int boardWidth = Mancala.Properties.Resources.board.Width;
             int pitWidth = Mancala.Properties.Resources.pit.Width;
-            int xOffset = 27;
+            int xOffset = 110;
             int p1 = 1;
             int p2 = 2;
             pitPictureBoxes[p1] = createPlayerPits(xOffset, 175, Mancala.Properties.Resources.pit.Width + 10, p1);
@@ -142,10 +142,18 @@ namespace Mancala
                         BackColor = Color.Transparent,
                         Visible = true
                     };
-                    pebble.Location = scatter(j, pebble.Size, pitPictureBoxes[playerId][i].Size);
+                    var pitPicture = pitPictureBoxes[playerId][i];
+                    pebble.Location = scatter(j, pebble.Size, pitPicture.Size);
+                    pebble.MouseClick += Pebble_MouseClick;
                     pitPictureBoxes[playerId][i].Controls.Add(pebble);
                 }
             }
+        }
+
+        private void Pebble_MouseClick(object sender, MouseEventArgs e)
+        {
+            var pit = (PictureBox) ((PictureBox)sender).Parent;
+            pitClicked(pit, e);
         }
 
 
