@@ -29,12 +29,12 @@ namespace Mancala
         }
 
         private Dictionary<int, List<PictureBox>> pitPictureBoxes = new Dictionary<int, List<PictureBox>>();
-        private Rules rules = new Rules();
+        private Rules rules;
 
         private List<PictureBox> createPlayerPits(int xPosition, int yPosition, int step, int player)
         {
             var pitImages = new List<PictureBox>();
-            for (int i = 1; i <= 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 var picture = new PictureBox
                 {
@@ -57,6 +57,7 @@ namespace Mancala
 
         private void setUpPits(Dictionary<int, List<PictureBox>> playerSides)
         {
+            boardBox.Controls.Clear();
             foreach (var side in playerSides)
             {
                 foreach (var pit in side.Value)
@@ -100,11 +101,14 @@ namespace Mancala
         /// <param name="e"></param>
         private void createPits(object sender, EventArgs e)
         {
+            rules = new Rules();
             int boardWidth = Mancala.Properties.Resources.board.Width;
             int pitWidth = Mancala.Properties.Resources.pit.Width;
-            int xOffset = 27;
+            int xOffset = 110;
             int p1 = 1;
             int p2 = 2;
+
+            pitPictureBoxes.Clear();            
             pitPictureBoxes[p1] = createPlayerPits(xOffset, 175, Mancala.Properties.Resources.pit.Width + 10, p1);
             pitPictureBoxes[p1].Add(createPlayerStore(boardBox.Width - 100, 20, p1));
             pitPictureBoxes[p2] = createPlayerPits(boardWidth - pitWidth - xOffset, 20, -(pitWidth + 10), p2);
@@ -118,6 +122,17 @@ namespace Mancala
         {
             render(gameState.playerOne, 1);
             render(gameState.playerTwo, 2);
+            if (gameState.currentPlayer == 1)
+            {
+                player1Label.Font = new Font(player1Label.Font, FontStyle.Italic);
+                player2Label.Font = new Font(player2Label.Font, FontStyle.Regular);
+
+            }
+            else
+            {
+                player2Label.Font = new Font(player2Label.Font, FontStyle.Italic);
+                player1Label.Font = new Font(player1Label.Font, FontStyle.Regular);
+            }
         }
 
         private Point scatter(int pebbleIndex, Size pebbleSize, Size pitSize)
@@ -190,21 +205,10 @@ namespace Mancala
             // TODO: Start a two player game. User vs User
 
             //Creates a new game and rules and writes the player turn to the console.
-            GameState game = new GameState();
-            Rules gameRules = new Rules();
-            Console.Write(game.currentPlayer);
+            createPits(sender, e);
 
             // Labels which players turn it is by italicised letters
-            if(game.currentPlayer == 1)
-            {
-                player1Label.Font = new Font(player1Label.Font, FontStyle.Italic);
-                player2Label.Font = new Font(player2Label.Font, FontStyle.Regular);
-                
-            }else
-            {
-                player2Label.Font = new Font(player2Label.Font, FontStyle.Italic);
-                player1Label.Font = new Font(player1Label.Font, FontStyle.Regular);
-            }
+            
 
 
         }
