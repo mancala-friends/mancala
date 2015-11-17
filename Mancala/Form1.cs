@@ -184,6 +184,8 @@ namespace Mancala
             mancalaTabs.TabPages.Remove(menuTab);
 
             // TODO: Start a one player vs AI game
+            createPits(sender, e);
+
         }
 
         /// <summary>
