@@ -33,6 +33,8 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.mancalaTabs = new System.Windows.Forms.TabControl();
             this.gameTab = new System.Windows.Forms.TabPage();
+            this.player1Label = new System.Windows.Forms.Label();
+            this.player2Label = new System.Windows.Forms.Label();
             this.infoButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.boardBox = new System.Windows.Forms.PictureBox();
@@ -69,6 +71,8 @@
             // 
             // gameTab
             // 
+            this.gameTab.Controls.Add(this.player1Label);
+            this.gameTab.Controls.Add(this.player2Label);
             this.gameTab.Controls.Add(this.infoButton);
             this.gameTab.Controls.Add(this.backButton);
             this.gameTab.Controls.Add(this.boardBox);
@@ -79,6 +83,26 @@
             this.gameTab.TabIndex = 0;
             this.gameTab.Text = "Game";
             this.gameTab.UseVisualStyleBackColor = true;
+            // 
+            // player1Label
+            // 
+            this.player1Label.AutoSize = true;
+            this.player1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1Label.Location = new System.Drawing.Point(632, 427);
+            this.player1Label.Name = "player1Label";
+            this.player1Label.Size = new System.Drawing.Size(113, 31);
+            this.player1Label.TabIndex = 7;
+            this.player1Label.Text = "Player 1";
+            // 
+            // player2Label
+            // 
+            this.player2Label.AutoSize = true;
+            this.player2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player2Label.Location = new System.Drawing.Point(31, 37);
+            this.player2Label.Name = "player2Label";
+            this.player2Label.Size = new System.Drawing.Size(113, 31);
+            this.player2Label.TabIndex = 6;
+            this.player2Label.Text = "Player 2";
             // 
             // infoButton
             // 
@@ -155,6 +179,7 @@
             this.aboutButton.TabIndex = 4;
             this.aboutButton.Text = "About";
             this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // instructionButton
             // 
@@ -164,6 +189,7 @@
             this.instructionButton.TabIndex = 3;
             this.instructionButton.Text = "Instructions";
             this.instructionButton.UseVisualStyleBackColor = true;
+            this.instructionButton.Click += new System.EventHandler(this.instructionButton_Click);
             // 
             // networkButton
             // 
@@ -209,6 +235,7 @@
             this.Load += new System.EventHandler(this.createPits);
             this.mancalaTabs.ResumeLayout(false);
             this.gameTab.ResumeLayout(false);
+            this.gameTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boardBox)).EndInit();
             this.menuTab.ResumeLayout(false);
             this.menuTab.PerformLayout();
@@ -232,6 +259,8 @@
         private System.Windows.Forms.Button twoPlayerButton;
         private System.Windows.Forms.Button onePlayerButton;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label player1Label;
+        private System.Windows.Forms.Label player2Label;
     }
 }
 
