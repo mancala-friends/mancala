@@ -45,6 +45,15 @@ public class Rules
 
     }
 
+    private void clearpits() {
+      for(int i = 0; i < 6; i++) {
+        gamestate.playerOne[6] += gamestate.playerOne[i];
+        gamestate.playerOne[i] = 0;
+        gamestate.playerTwo[6] += gamestate.playerTwo[i];
+        gamestate.playerTwo[i] = 0;
+      }
+    }
+
     private bool movePlayer(int pit, int[] playerOne, int[] playerTwo)
     {
         //empty current pit
@@ -57,6 +66,8 @@ public class Rules
             //place pebbles on our side
             while (i < 7)
             {
+                currentMovePebbles -= 1;
+                playerTwo[i] += 1;
                 //check for end of turn
                 if (currentMovePebbles == 0)
                 {
@@ -68,7 +79,7 @@ public class Rules
                     else
                     {
                         //steal stuff
-                        if (playerTwo[i] == 0 && playerOne[5 - i] > 0)
+                        if (playerTwo[i] == 1 && playerOne[5 - i] > 0)
                         {
                             playerTwo[6] += playerOne[5 - i];
                             playerTwo[6] += playerTwo[i];
@@ -78,12 +89,7 @@ public class Rules
                     }
                     return false;
                 }
-                else
-                {
-                    currentMovePebbles -= 1;
-                    playerTwo[i] += 1;
-                    i++;
-                }
+                i++;
             }
             for (int j = 0; j < 6 && currentMovePebbles > 0; j++)
             {
@@ -108,7 +114,9 @@ public class Rules
             goAgain = movePlayer(pit, gamestate.playerTwo, gamestate.playerOne);
         }
 
-       if(!goAgain) gamestate.currentPlayer = (gamestate.currentPlayer == 1) ? 2 : 1;
+        if(gamestate.isEmpty(gamestate.playerOne) || gamestate.isEmpty(gamestate.playerTwo)) clearpits();
+
+        if(!goAgain) gamestate.currentPlayer = (gamestate.currentPlayer == 1) ? 2 : 1;
 
     }
 

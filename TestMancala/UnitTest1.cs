@@ -34,6 +34,22 @@ namespace Tests
         }
 
         [TestMethod()]
+        public void tryMoveTestSteal()
+        {
+            Rules daRules = new Rules(1);
+            //move player 1 location 0
+
+            //test normal move P1
+            daRules.tryMove(5);
+            daRules.tryMove(3);
+            daRules.tryMove(0);
+
+            if (daRules.gamestate.playerOne[6] != 7) Assert.Fail();
+            if (daRules.gamestate.playerOne[5] != 0) Assert.Fail();
+            if (daRules.gamestate.playerTwo[0] != 0) Assert.Fail();
+        }
+
+        [TestMethod()]
         public void tryMoveTestEmptyPit()
         {
             Rules daRules = new Rules(1);
@@ -41,42 +57,28 @@ namespace Tests
             //move player 1 location 0
             daRules.tryMove(0);
 
-            if (daRules.getGamestate().currentPlayer != 2)
+            if (daRules.gamestate.currentPlayer != 2)
             {
-                Assert.Fail();
+                Assert.Fail("should be player twos turn");
             }
 
             //move player 2 location 0
             daRules.tryMove(0);
 
-            if (daRules.getGamestate().currentPlayer != 1)
+            if (daRules.gamestate.currentPlayer != 1)
             {
-                Assert.Fail();
+                Assert.Fail("should be player one's turn");
             }
 
             //try to move player 1 location 0 again, this should return false(can't move an empty space)
             if (daRules.tryMove(0) == true)
             {
-                Assert.Fail();
+                Assert.Fail("was allowed to move when not allowed");
             }
 
-            if (daRules.getGamestate().currentPlayer != 1)
+            if (daRules.gamestate.currentPlayer != 1)
             {
-                Assert.Fail();
-            }
-
-            //player 1 valid move
-            daRules.tryMove(1);
-
-            //try to move player 2 location 0 again, this should return false(can't move an empty space)
-            if (daRules.tryMove(0) == true)
-            {
-                Assert.Fail();
-            }
-
-            if (daRules.getGamestate().currentPlayer != 2)
-            {
-                Assert.Fail();
+                Assert.Fail("should stay player one's turn");
             }
         }
     }
