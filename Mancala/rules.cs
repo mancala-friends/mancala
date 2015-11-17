@@ -64,8 +64,10 @@ public class Rules
                         //steal stuff
                         if (gamestate.playerOne[i] == 0 && gamestate.playerTwo[5-i] > 0)
                         {
-                            gamestate.playerOne[6] += gamestate.playerTwo[i];
-                            gamestate.playerTwo[i] = 0;
+                            gamestate.playerOne[6] += gamestate.playerTwo[5-i];
+                            gamestate.playerOne[6] += gamestate.playerOne[i];
+                            gamestate.playerOne[i] = 0;
+                            gamestate.playerTwo[5-i] = 0;
                         }
                     }
                     return false;
@@ -112,8 +114,10 @@ public class Rules
                         //steal stuff
                         if (gamestate.playerTwo[i] == 0 && gamestate.playerOne[5-i] > 0)
                         {
-                            gamestate.playerTwo[6] += gamestate.playerOne[i];
-                            gamestate.playerOne[i] = 0;
+                            gamestate.playerTwo[6] += gamestate.playerOne[5-i];
+                            gamestate.playerTwo[6] += gamestate.playerTwo[i];
+                            gamestate.playerTwo[i] = 0;
+                            gamestate.playerOne[5-i] = 0;
                         }
                     }
                     return false;
