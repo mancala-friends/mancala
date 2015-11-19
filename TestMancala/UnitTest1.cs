@@ -50,6 +50,17 @@ namespace Tests
         }
 
         [TestMethod()]
+        public void tryMoveTestGoAgain()
+        {
+            //test to go again after landing in store
+            Rules daRules = new Rules(1);
+            
+            daRules.tryMove(2);
+            Assert.AreEqual(1, daRules.gamestate.currentPlayer);
+        }
+
+
+        [TestMethod()]
         public void tryMoveTestEmptyPit()
         {
             Rules daRules = new Rules(1);
