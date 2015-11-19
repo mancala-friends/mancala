@@ -7,11 +7,11 @@ public class GameState
     public int[] playerTwo;
     public int currentPlayer;
 
-    public bool isOver()
+    public bool isEmpty(int[] player)
     {
         for(int i =0; i< 6; i++)
         {
-            if(playerOne[i] != 0 || playerTwo[i] != 0)
+            if(player[i] != 0)
             {
                 return false;
             }
@@ -19,7 +19,11 @@ public class GameState
 
         return true;
     }
-    
+
+    public bool isOver()
+    {
+      return isEmpty(playerOne) && isEmpty(playerTwo);
+    }
 
     public GameState()
 	{

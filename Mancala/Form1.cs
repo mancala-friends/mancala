@@ -164,10 +164,18 @@ namespace Mancala
                         BackColor = Color.Transparent,
                         Visible = true
                     };
-                    pebble.Location = scatter(j, pebble.Size, pitPictureBoxes[playerId][i].Size);
+                    var pitPicture = pitPictureBoxes[playerId][i];
+                    pebble.Location = scatter(j, pebble.Size, pitPicture.Size);
+                    pebble.MouseClick += Pebble_MouseClick;
                     pitPictureBoxes[playerId][i].Controls.Add(pebble);
                 }
             }
+        }
+
+        private void Pebble_MouseClick(object sender, MouseEventArgs e)
+        {
+            var pit = (PictureBox) ((PictureBox)sender).Parent;
+            pitClicked(pit, e);
         }
 
 

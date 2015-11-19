@@ -10,13 +10,13 @@ namespace Tests
         [TestMethod()]
         public void tryMoveTestBasic()
         {
-            Rules daRules = new Rules();
+            Rules daRules = new Rules(1);
             //move player 1 location 0
 
             //test normal move P1
             daRules.tryMove(5);
 
-            if(daRules.gamestate.playerOne[5] != 0) Assert.Fail("Didn't empty pit P1" + daRules.getGamestate().playerOne[5]);
+            if(daRules.gamestate.playerOne[5] != 0) Assert.Fail("Didn't empty pit P1");
             if (daRules.gamestate.playerOne[6] != 1) Assert.Fail("Didn't place pebble in store P1");
             if (daRules.gamestate.playerTwo[0] != 5) Assert.Fail();
             if (daRules.gamestate.playerTwo[1] != 5) Assert.Fail();
@@ -25,58 +25,60 @@ namespace Tests
 
             //test normal move P2
             daRules.tryMove(5);
-            if (daRules.getGamestate().playerTwo[5] != 0) Assert.Fail("Didn't empty pit P2");
-            if (daRules.getGamestate().playerTwo[6] != 1) Assert.Fail("Didn't place pebble in store P2");
-            if (daRules.getGamestate().playerOne[0] != 5) Assert.Fail();
-            if (daRules.getGamestate().playerOne[1] != 5) Assert.Fail();
-            if (daRules.getGamestate().playerOne[2] != 5) Assert.Fail();
-            if (daRules.getGamestate().playerOne[3] != 4) Assert.Fail("went too far");
+            if (daRules.gamestate.playerTwo[5] != 0) Assert.Fail("Didn't empty pit P2");
+            if (daRules.gamestate.playerTwo[6] != 1) Assert.Fail("Didn't place pebble in store P2");
+            if (daRules.gamestate.playerOne[0] != 5) Assert.Fail();
+            if (daRules.gamestate.playerOne[1] != 5) Assert.Fail();
+            if (daRules.gamestate.playerOne[2] != 5) Assert.Fail();
+            if (daRules.gamestate.playerOne[3] != 4) Assert.Fail("went too far");
+        }
+
+        [TestMethod()]
+        public void tryMoveTestSteal()
+        {
+            Rules daRules = new Rules(1);
+            //move player 1 location 0
+
+            //test normal move P1
+            daRules.tryMove(5);
+            daRules.tryMove(3);
+            daRules.tryMove(0);
+
+            if (daRules.gamestate.playerOne[6] != 7) Assert.Fail();
+            if (daRules.gamestate.playerOne[5] != 0) Assert.Fail();
+            if (daRules.gamestate.playerTwo[0] != 0) Assert.Fail();
         }
 
         [TestMethod()]
         public void tryMoveTestEmptyPit()
         {
-            Rules daRules = new Rules();
+            Rules daRules = new Rules(1);
 
             //move player 1 location 0
             daRules.tryMove(0);
 
-            if (daRules.getGamestate().currentPlayer != 2)
+            if (daRules.gamestate.currentPlayer != 2)
             {
-                Assert.Fail();
+                Assert.Fail("should be player twos turn");
             }
 
             //move player 2 location 0
             daRules.tryMove(0);
 
-            if (daRules.getGamestate().currentPlayer != 1)
+            if (daRules.gamestate.currentPlayer != 1)
             {
-                Assert.Fail();
+                Assert.Fail("should be player one's turn");
             }
 
             //try to move player 1 location 0 again, this should return false(can't move an empty space)
             if (daRules.tryMove(0) == true)
             {
-                Assert.Fail();
+                Assert.Fail("was allowed to move when not allowed");
             }
 
-            if (daRules.getGamestate().currentPlayer != 1)
+            if (daRules.gamestate.currentPlayer != 1)
             {
-                Assert.Fail();
-            }
-
-            //player 1 valid move
-            daRules.tryMove(1);
-
-            //try to move player 2 location 0 again, this should return false(can't move an empty space)
-            if (daRules.tryMove(0) == true)
-            {
-                Assert.Fail();
-            }
-
-            if (daRules.getGamestate().currentPlayer != 2)
-            {
-                Assert.Fail();
+                Assert.Fail("should stay player one's turn");
             }
         }
     }
