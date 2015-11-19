@@ -79,9 +79,9 @@ namespace Mancala
                 render(gameState);
                 if(gameState.isOver())
                 {
-                    gameOverScreen gameOverView = new gameOverScreen();
+                    gameOverScreen gameOverView = new gameOverScreen(gameState);
                     gameOverView.Show();
-                    backButton_Click(sender, e);
+                    //backButton_Click(sender, e);
                 }
             }
         }

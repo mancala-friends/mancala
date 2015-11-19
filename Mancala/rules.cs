@@ -4,6 +4,11 @@ public class Rules
 {
     public GameState gamestate;
 
+    public Rules(GameState game)
+    {
+        gamestate = game;
+    }
+
     public Rules(int playerTurn)
     {
         gamestate = new GameState();
