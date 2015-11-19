@@ -159,8 +159,8 @@ namespace Mancala
                     PictureBox pebble = new PictureBox
                     {
                         Name = "Pebble",                 
-                        Image = Mancala.Properties.Resources.pebble_magenta,
-                        Size = Mancala.Properties.Resources.pebble_magenta.Size,
+                        Image = Mancala.Properties.Resources.pebble_yellow,
+                        Size = Mancala.Properties.Resources.pebble_yellow.Size,
                         BackColor = Color.Transparent,
                         Visible = true
                     };
