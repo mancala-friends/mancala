@@ -59,6 +59,24 @@ namespace Tests
             Assert.AreEqual(1, daRules.gamestate.currentPlayer);
         }
 
+        [TestMethod()]
+        public void tryMoveTestFullGame()
+        {
+            //test to go again after landing in store
+            Rules daRules = new Rules();
+
+            while (!daRules.getGamestate().isOver())
+            {
+                int i = 0;
+                while (!daRules.tryMove(i))
+                {
+                    i++;
+                }
+            }
+
+
+        }
+
 
         [TestMethod()]
         public void tryMoveTestEmptyPit()
