@@ -50,9 +50,42 @@ namespace Tests
         }
 
         [TestMethod()]
+        public void tryMoveTestGoAgain()
+        {
+            //test to go again after landing in store
+            Rules daRules = new Rules(1);
+            
+            daRules.tryMove(2);
+            Assert.AreEqual(1, daRules.gamestate.currentPlayer);
+        }
+
+        [TestMethod()]
+        public void tryMoveTestFullGame()
+        {
+            //test to go again after landing in store
+            Rules daRules = new Rules();
+
+            while (!daRules.getGamestate().isOver())
+            {
+                int i = 0;
+                while (!daRules.tryMove(i))
+                {
+                    i++;
+                }
+            }
+
+
+        }
+
+
+        [TestMethod()]
         public void tryMoveTestEmptyPit()
         {
             Rules daRules = new Rules(1);
+
+            Assert.IsFalse(daRules.gamestate.isOver());
+            Assert.IsFalse(daRules.tryMove(-1));
+            Assert.IsFalse(daRules.tryMove(6));
 
             //move player 1 location 0
             daRules.tryMove(0);
@@ -61,6 +94,9 @@ namespace Tests
             {
                 Assert.Fail("should be player twos turn");
             }
+
+            Assert.IsFalse(daRules.tryMove(-1));
+            Assert.IsFalse(daRules.tryMove(6));
 
             //move player 2 location 0
             daRules.tryMove(0);
@@ -80,6 +116,22 @@ namespace Tests
             {
                 Assert.Fail("should stay player one's turn");
             }
+
+            daRules.tryMove(2);
+            daRules.tryMove(5);
+            daRules.tryMove(0);
+
+            //try to move player 2 location 5 again, this should return false(can't move an empty space)
+            if (daRules.tryMove(5) == true)
+            {
+                Assert.Fail("was allowed to move when not allowed");
+            }
+
+            if (daRules.gamestate.currentPlayer != 2)
+            {
+                Assert.Fail("should stay player one's turn");
+            }
+
         }
     }
 }
