@@ -33,6 +33,7 @@
             this.player2ScoreLabel = new System.Windows.Forms.Label();
             this.player1ScoreNumLabel = new System.Windows.Forms.Label();
             this.player2ScoreNumLabel = new System.Windows.Forms.Label();
+            this.winLoseLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -83,11 +84,22 @@
             this.player2ScoreNumLabel.Size = new System.Drawing.Size(0, 61);
             this.player2ScoreNumLabel.TabIndex = 4;
             // 
+            // winLoseLabel
+            // 
+            this.winLoseLabel.AutoSize = true;
+            this.winLoseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winLoseLabel.Location = new System.Drawing.Point(274, 194);
+            this.winLoseLabel.Name = "winLoseLabel";
+            this.winLoseLabel.Size = new System.Drawing.Size(188, 31);
+            this.winLoseLabel.TabIndex = 5;
+            this.winLoseLabel.Text = "Player 2 Wins!";
+            // 
             // gameOverScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 293);
+            this.Controls.Add(this.winLoseLabel);
             this.Controls.Add(this.player2ScoreNumLabel);
             this.Controls.Add(this.player1ScoreNumLabel);
             this.Controls.Add(this.player2ScoreLabel);
@@ -107,5 +119,6 @@
         private System.Windows.Forms.Label player2ScoreLabel;
         private System.Windows.Forms.Label player1ScoreNumLabel;
         private System.Windows.Forms.Label player2ScoreNumLabel;
+        private System.Windows.Forms.Label winLoseLabel;
     }
 }
