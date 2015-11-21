@@ -260,7 +260,8 @@ namespace Mancala
         /// <param name="e"></param>
         private void infoButton_Click(object sender, EventArgs e)
         {
-
+            infoFrame tutorial = new infoFrame();
+            tutorial.Show();
         }
 
 

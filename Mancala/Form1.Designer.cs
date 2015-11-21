@@ -189,7 +189,7 @@
             this.instructionButton.TabIndex = 3;
             this.instructionButton.Text = "Instructions";
             this.instructionButton.UseVisualStyleBackColor = true;
-            this.instructionButton.Click += new System.EventHandler(this.instructionButton_Click);
+            this.instructionButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
             // networkButton
             // 
