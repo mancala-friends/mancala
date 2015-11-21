@@ -231,7 +231,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Mancala";
             this.Load += new System.EventHandler(this.createPits);
             this.mancalaTabs.ResumeLayout(false);
             this.gameTab.ResumeLayout(false);
