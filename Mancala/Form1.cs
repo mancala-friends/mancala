@@ -130,14 +130,18 @@ namespace Mancala
             render(gameState.playerTwo, 2);
             if (gameState.currentPlayer == 1)
             {
-                player1Label.Font = new Font(player1Label.Font, FontStyle.Italic);
-                player2Label.Font = new Font(player2Label.Font, FontStyle.Regular);
+                player1Label.Font = new Font("Microsoft Sans Serif",26, FontStyle.Regular);
+                player1Label.ForeColor = System.Drawing.Color.Gold;
+                player2Label.Font = new Font("Microsoft Sans Serif",20, FontStyle.Regular);
+                player2Label.ForeColor = System.Drawing.Color.Black;
 
             }
             else
             {
-                player2Label.Font = new Font(player2Label.Font, FontStyle.Italic);
-                player1Label.Font = new Font(player1Label.Font, FontStyle.Regular);
+                player2Label.Font = new Font("Microsoft Sans Serif", 26, FontStyle.Regular);
+                player2Label.ForeColor = System.Drawing.Color.Gold;
+                player1Label.Font = new Font("Microsoft Sans Serif", 20, FontStyle.Regular);
+                player1Label.ForeColor = System.Drawing.Color.Black;
             }
         }
 

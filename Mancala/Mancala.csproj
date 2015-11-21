@@ -113,6 +113,7 @@
     <EmbeddedResource Include="back_button.png" />
     <Content Include="board.png" />
     <Content Include="info.png" />
+    <None Include="mancalaScreenBoard.PNG" />
     <Content Include="pebble_cyan.png" />
     <Content Include="pebble_magenta.png" />
     <Content Include="pebble_yellow.png" />

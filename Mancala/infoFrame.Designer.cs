@@ -68,7 +68,7 @@
             // 
             // instructionsTextBox
             // 
-            this.instructionsTextBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.instructionsTextBox.BackColor = System.Drawing.SystemColors.GrayText;
             this.instructionsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.instructionsTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.instructionsTextBox.Location = new System.Drawing.Point(18, 98);
@@ -81,7 +81,7 @@
             // 
             // conditionRulesLabel
             // 
-            this.conditionRulesLabel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.conditionRulesLabel.BackColor = System.Drawing.SystemColors.GrayText;
             this.conditionRulesLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.conditionRulesLabel.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.conditionRulesLabel.Location = new System.Drawing.Point(18, 272);
@@ -95,14 +95,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(529, 484);
             this.Controls.Add(this.conditionRulesLabel);
             this.Controls.Add(this.instructionsTextBox);
             this.Controls.Add(this.specialCondLabel);
             this.Controls.Add(this.rulesLabel);
             this.Controls.Add(this.infoTitleLabel);
-            this.ForeColor = System.Drawing.Color.Crimson;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "infoFrame";
             this.Text = "Game Information";
             this.ResumeLayout(false);
