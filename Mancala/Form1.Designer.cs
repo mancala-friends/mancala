@@ -39,6 +39,7 @@
             this.backButton = new System.Windows.Forms.Button();
             this.boardBox = new System.Windows.Forms.PictureBox();
             this.menuTab = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.aboutButton = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             this.gameTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boardBox)).BeginInit();
             this.menuTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -71,6 +73,7 @@
             // 
             // gameTab
             // 
+            this.gameTab.BackColor = System.Drawing.SystemColors.GrayText;
             this.gameTab.Controls.Add(this.player1Label);
             this.gameTab.Controls.Add(this.player2Label);
             this.gameTab.Controls.Add(this.infoButton);
@@ -82,12 +85,12 @@
             this.gameTab.Size = new System.Drawing.Size(776, 535);
             this.gameTab.TabIndex = 0;
             this.gameTab.Text = "Game";
-            this.gameTab.UseVisualStyleBackColor = true;
             // 
             // player1Label
             // 
             this.player1Label.AutoSize = true;
             this.player1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1Label.ForeColor = System.Drawing.Color.Gold;
             this.player1Label.Location = new System.Drawing.Point(632, 427);
             this.player1Label.Name = "player1Label";
             this.player1Label.Size = new System.Drawing.Size(113, 31);
@@ -98,6 +101,7 @@
             // 
             this.player2Label.AutoSize = true;
             this.player2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player2Label.ForeColor = System.Drawing.SystemColors.ControlText;
             this.player2Label.Location = new System.Drawing.Point(31, 37);
             this.player2Label.Name = "player2Label";
             this.player2Label.Size = new System.Drawing.Size(113, 31);
@@ -136,6 +140,8 @@
             // 
             // menuTab
             // 
+            this.menuTab.BackColor = System.Drawing.SystemColors.GrayText;
+            this.menuTab.Controls.Add(this.pictureBox1);
             this.menuTab.Controls.Add(this.titleLabel);
             this.menuTab.Controls.Add(this.exitButton);
             this.menuTab.Controls.Add(this.aboutButton);
@@ -149,13 +155,22 @@
             this.menuTab.Size = new System.Drawing.Size(776, 535);
             this.menuTab.TabIndex = 1;
             this.menuTab.Text = "Menu";
-            this.menuTab.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Mancala.Properties.Resources.mancalaScreenBoard1;
+            this.pictureBox1.Location = new System.Drawing.Point(38, 88);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(702, 289);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(146, 3);
+            this.titleLabel.Location = new System.Drawing.Point(149, 16);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(485, 55);
             this.titleLabel.TabIndex = 6;
@@ -163,7 +178,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(61, 337);
+            this.exitButton.Location = new System.Drawing.Point(486, 504);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(184, 23);
             this.exitButton.TabIndex = 5;
@@ -173,7 +188,7 @@
             // 
             // aboutButton
             // 
-            this.aboutButton.Location = new System.Drawing.Point(61, 292);
+            this.aboutButton.Location = new System.Drawing.Point(486, 446);
             this.aboutButton.Name = "aboutButton";
             this.aboutButton.Size = new System.Drawing.Size(184, 23);
             this.aboutButton.TabIndex = 4;
@@ -183,17 +198,17 @@
             // 
             // instructionButton
             // 
-            this.instructionButton.Location = new System.Drawing.Point(61, 252);
+            this.instructionButton.Location = new System.Drawing.Point(486, 394);
             this.instructionButton.Name = "instructionButton";
             this.instructionButton.Size = new System.Drawing.Size(184, 23);
             this.instructionButton.TabIndex = 3;
             this.instructionButton.Text = "Instructions";
             this.instructionButton.UseVisualStyleBackColor = true;
-            this.instructionButton.Click += new System.EventHandler(this.instructionButton_Click);
+            this.instructionButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
             // networkButton
             // 
-            this.networkButton.Location = new System.Drawing.Point(61, 160);
+            this.networkButton.Location = new System.Drawing.Point(103, 504);
             this.networkButton.Name = "networkButton";
             this.networkButton.Size = new System.Drawing.Size(184, 23);
             this.networkButton.TabIndex = 2;
@@ -203,7 +218,7 @@
             // 
             // twoPlayerButton
             // 
-            this.twoPlayerButton.Location = new System.Drawing.Point(61, 122);
+            this.twoPlayerButton.Location = new System.Drawing.Point(103, 446);
             this.twoPlayerButton.Name = "twoPlayerButton";
             this.twoPlayerButton.Size = new System.Drawing.Size(184, 23);
             this.twoPlayerButton.TabIndex = 1;
@@ -213,7 +228,7 @@
             // 
             // onePlayerButton
             // 
-            this.onePlayerButton.Location = new System.Drawing.Point(61, 82);
+            this.onePlayerButton.Location = new System.Drawing.Point(103, 394);
             this.onePlayerButton.Name = "onePlayerButton";
             this.onePlayerButton.Size = new System.Drawing.Size(184, 23);
             this.onePlayerButton.TabIndex = 0;
@@ -231,7 +246,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Mancala";
             this.Load += new System.EventHandler(this.createPits);
             this.mancalaTabs.ResumeLayout(false);
             this.gameTab.ResumeLayout(false);
@@ -239,6 +254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.boardBox)).EndInit();
             this.menuTab.ResumeLayout(false);
             this.menuTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,6 +277,7 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label player1Label;
         private System.Windows.Forms.Label player2Label;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

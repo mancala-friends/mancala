@@ -79,9 +79,9 @@ namespace Mancala
                 render(gameState);
                 if(gameState.isOver())
                 {
-                    gameOverScreen gameOverView = new gameOverScreen();
+                    gameOverScreen gameOverView = new gameOverScreen(gameState);
                     gameOverView.Show();
-                    backButton_Click(sender, e);
+                    //backButton_Click(sender, e);
                 }
             }
         }
@@ -130,14 +130,18 @@ namespace Mancala
             render(gameState.playerTwo, 2);
             if (gameState.currentPlayer == 1)
             {
-                player1Label.Font = new Font(player1Label.Font, FontStyle.Italic);
-                player2Label.Font = new Font(player2Label.Font, FontStyle.Regular);
+                player1Label.Font = new Font("Microsoft Sans Serif",26, FontStyle.Regular);
+                player1Label.ForeColor = System.Drawing.Color.Gold;
+                player2Label.Font = new Font("Microsoft Sans Serif",20, FontStyle.Regular);
+                player2Label.ForeColor = System.Drawing.Color.Black;
 
             }
             else
             {
-                player2Label.Font = new Font(player2Label.Font, FontStyle.Italic);
-                player1Label.Font = new Font(player1Label.Font, FontStyle.Regular);
+                player2Label.Font = new Font("Microsoft Sans Serif", 26, FontStyle.Regular);
+                player2Label.ForeColor = System.Drawing.Color.Gold;
+                player1Label.Font = new Font("Microsoft Sans Serif", 20, FontStyle.Regular);
+                player1Label.ForeColor = System.Drawing.Color.Black;
             }
         }
 
@@ -159,8 +163,8 @@ namespace Mancala
                     PictureBox pebble = new PictureBox
                     {
                         Name = "Pebble",                 
-                        Image = Mancala.Properties.Resources.pebble_magenta,
-                        Size = Mancala.Properties.Resources.pebble_magenta.Size,
+                        Image = Mancala.Properties.Resources.pebble_yellow,
+                        Size = Mancala.Properties.Resources.pebble_yellow.Size,
                         BackColor = Color.Transparent,
                         Visible = true
                     };
@@ -192,6 +196,8 @@ namespace Mancala
             mancalaTabs.TabPages.Remove(menuTab);
 
             // TODO: Start a one player vs AI game
+            createPits(sender, e);
+
         }
 
         /// <summary>
@@ -258,7 +264,8 @@ namespace Mancala
         /// <param name="e"></param>
         private void infoButton_Click(object sender, EventArgs e)
         {
-
+            infoFrame tutorial = new infoFrame();
+            tutorial.Show();
         }
 
 
