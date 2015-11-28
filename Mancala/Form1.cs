@@ -145,14 +145,58 @@ namespace Mancala
             }
         }
 
-        private Point scatter(int pebbleIndex, Size pebbleSize, Size pitSize)
+        private Bitmap colorPick(int chosen)
+        {
+            switch (chosen)
+            {
+                case 0:
+                    return Mancala.Properties.Resources.pebble_yellow;
+                case 1:
+                    return Mancala.Properties.Resources.pebble_cyan;
+                case 2:
+                    return Mancala.Properties.Resources.pebble_magenta;
+                default:
+                    return Mancala.Properties.Resources.pebble_yellow;
+            }
+        }
+
+        private void determineColor(int oneLayerOfPebbles, ref int chosenColor, ref int pebbleIndex)
+        {
+            while (pebbleIndex >= oneLayerOfPebbles)
+            {
+                pebbleIndex -= oneLayerOfPebbles;
+                chosenColor = (chosenColor + 1) % 3;
+            }
+        }
+
+        private PictureBox scatterPebbles(int pebbleIndex, Size pebbleSize, Size pitSize)
         {
             int offset = 10;
             int padding = 5;
+
+            int chosenColor = 0;
+            int oneLayerOfPebbles = 2 * (pitSize.Height - offset) / (pebbleSize.Height + padding);
+            determineColor(oneLayerOfPebbles, ref chosenColor, ref pebbleIndex);
+            var color = colorPick(chosenColor);
+            PictureBox pebble = new PictureBox
+            {
+                Name = "Pebble",
+                Image = color,
+                Size = color.Size,
+                BackColor = Color.Transparent,
+                Visible = true
+            };
+
+            
             int width = offset + (pebbleSize.Width + padding) * (pebbleIndex % 2);
             int height = offset + (pebbleIndex /2) * (pebbleSize.Height + padding);
-            return new Point(width, height);
+            pebble.Location = new Point(width, height);
+            pebble.Size = pebbleSize;
+            pebble.MouseClick += Pebble_MouseClick;
+            
+            return pebble;
         }
+
         private void render(int[] player, int playerId)
         {
             for(var i = 0; i < player.Length; i++)
@@ -160,18 +204,10 @@ namespace Mancala
                 pitPictureBoxes[playerId][i].Controls.Clear();
                 for(var j = 0; j < player[i]; j++)
                 {
-                    PictureBox pebble = new PictureBox
-                    {
-                        Name = "Pebble",                 
-                        Image = Mancala.Properties.Resources.pebble_yellow,
-                        Size = Mancala.Properties.Resources.pebble_yellow.Size,
-                        BackColor = Color.Transparent,
-                        Visible = true
-                    };
                     var pitPicture = pitPictureBoxes[playerId][i];
-                    pebble.Location = scatter(j, pebble.Size, pitPicture.Size);
-                    pebble.MouseClick += Pebble_MouseClick;
-                    pitPictureBoxes[playerId][i].Controls.Add(pebble);
+                    var pebble = scatterPebbles(j, Mancala.Properties.Resources.pebble_yellow.Size, pitPicture.Size);
+                    pitPicture.Controls.Add(pebble);
+                    pebble.BringToFront();
                 }
             }
         }
