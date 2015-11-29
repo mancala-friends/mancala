@@ -170,21 +170,22 @@ namespace Mancala
             return slice * (pitLength / totalSlices) + (pitLength / (totalSlices * 2)) - (pebbleLength / 2);
         }
 
-        private Point pebbleLocationInPit(int pebbleIndex, Size pebbleSize, Size pitSize, int rows, int columns)
+        private Point pebbleLocationInPit(int pebbleIndex, Size pebbleSize, Size paddedPitSize, Size padding, int rows, int columns)
         {
             int row = pebbleIndex / columns;
             int col = pebbleIndex % columns;
 
-            int xpos = calculatePosition(col, columns, pebbleSize.Width, pitSize.Width);
-            int ypos = calculatePosition(row, rows, pebbleSize.Height, pitSize.Height);
-            return new Point(xpos, ypos);
+            int xpos = calculatePosition(col, columns, pebbleSize.Width, paddedPitSize.Width);
+            int ypos = calculatePosition(row, rows, pebbleSize.Height, paddedPitSize.Height);
+            return new Point(xpos+padding.Width/2, ypos+padding.Height/2);
         }
 
         private PictureBox scatterPebble(int pebbleIndex, Size pebbleSize, Size pitSize)
         {
-            int padding = 2;
-            int rows = pitSize.Height / (pebbleSize.Height + 2 * padding);
-            int columns = pitSize.Width / (pebbleSize.Width + 2 * padding);
+            var padding = new Size(12, 12);
+            var paddedPitSize = pitSize - padding;
+            int rows = paddedPitSize.Height / pebbleSize.Height;
+            int columns = paddedPitSize.Width / pebbleSize.Width;
 
             int chosenColor = 0;
             determineColor(rows * columns, ref chosenColor, ref pebbleIndex);
@@ -200,7 +201,7 @@ namespace Mancala
             };
 
 
-            pebble.Location = pebbleLocationInPit(pebbleIndex, pebbleSize, pitSize, rows, columns);
+            pebble.Location = pebbleLocationInPit(pebbleIndex, pebbleSize, paddedPitSize, padding, rows, columns);
             pebble.Size = pebbleSize;
             pebble.MouseClick += Pebble_MouseClick;
             
