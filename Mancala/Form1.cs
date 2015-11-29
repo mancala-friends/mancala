@@ -70,8 +70,6 @@ namespace Mancala
         private void pitClicked(object sender, MouseEventArgs e)
         {
             Pit pit = (Pit) ((Control) sender).Tag;
-            Console.WriteLine("I see player {0}'s pit {1}!", pit.Player, pit.Location);
-            Console.WriteLine("Player {0} clicked pit {1} when it was player {2}'s turn: ", pit.Player, pit.Location, rules.getGamestate().currentPlayer);
             var gameState = rules.getGamestate();
             if (pit.Player == gameState.currentPlayer)
             {
@@ -153,10 +151,8 @@ namespace Mancala
                     return Mancala.Properties.Resources.pebble_yellow;
                 case 1:
                     return Mancala.Properties.Resources.pebble_cyan;
-                case 2:
-                    return Mancala.Properties.Resources.pebble_magenta;
                 default:
-                    return Mancala.Properties.Resources.pebble_yellow;
+                    return Mancala.Properties.Resources.pebble_magenta;
             }
         }
 
@@ -169,15 +165,31 @@ namespace Mancala
             }
         }
 
-        private PictureBox scatterPebbles(int pebbleIndex, Size pebbleSize, Size pitSize)
+        private int calculatePosition(int slice, int totalSlices, int pebbleLength, int pitLength)
         {
-            int offset = 10;
-            int padding = 5;
+            return slice * (pitLength / totalSlices) + (pitLength / (totalSlices * 2)) - (pebbleLength / 2);
+        }
+
+        private Point pebbleLocationInPit(int pebbleIndex, Size pebbleSize, Size pitSize, int rows, int columns)
+        {
+            int row = pebbleIndex / columns;
+            int col = pebbleIndex % columns;
+
+            int xpos = calculatePosition(col, columns, pebbleSize.Width, pitSize.Width);
+            int ypos = calculatePosition(row, rows, pebbleSize.Height, pitSize.Height);
+            return new Point(xpos, ypos);
+        }
+
+        private PictureBox scatterPebble(int pebbleIndex, Size pebbleSize, Size pitSize)
+        {
+            int padding = 2;
+            int rows = pitSize.Height / (pebbleSize.Height + 2 * padding);
+            int columns = pitSize.Width / (pebbleSize.Width + 2 * padding);
 
             int chosenColor = 0;
-            int oneLayerOfPebbles = 2 * (pitSize.Height - offset) / (pebbleSize.Height + padding);
-            determineColor(oneLayerOfPebbles, ref chosenColor, ref pebbleIndex);
+            determineColor(rows * columns, ref chosenColor, ref pebbleIndex);
             var color = colorPick(chosenColor);
+
             PictureBox pebble = new PictureBox
             {
                 Name = "Pebble",
@@ -187,10 +199,8 @@ namespace Mancala
                 Visible = true
             };
 
-            
-            int width = offset + (pebbleSize.Width + padding) * (pebbleIndex % 2);
-            int height = offset + (pebbleIndex /2) * (pebbleSize.Height + padding);
-            pebble.Location = new Point(width, height);
+
+            pebble.Location = pebbleLocationInPit(pebbleIndex, pebbleSize, pitSize, rows, columns);
             pebble.Size = pebbleSize;
             pebble.MouseClick += Pebble_MouseClick;
             
@@ -205,7 +215,7 @@ namespace Mancala
                 for(var j = 0; j < player[i]; j++)
                 {
                     var pitPicture = pitPictureBoxes[playerId][i];
-                    var pebble = scatterPebbles(j, Mancala.Properties.Resources.pebble_yellow.Size, pitPicture.Size);
+                    var pebble = scatterPebble(j, Mancala.Properties.Resources.pebble_yellow.Size, pitPicture.Size);
                     pitPicture.Controls.Add(pebble);
                     pebble.BringToFront();
                 }
