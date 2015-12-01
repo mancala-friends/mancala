@@ -93,6 +93,26 @@ namespace Mancala.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mancalaScreenBoard {
+            get {
+                object obj = ResourceManager.GetObject("mancalaScreenBoard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mancalaScreenBoard1 {
+            get {
+                object obj = ResourceManager.GetObject("mancalaScreenBoard1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pebble_cyan {
             get {
                 object obj = ResourceManager.GetObject("pebble_cyan", resourceCulture);
