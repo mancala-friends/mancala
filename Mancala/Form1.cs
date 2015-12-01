@@ -269,12 +269,8 @@ namespace Mancala
             mancalaTabs.SelectedTab = gameTab;
             mancalaTabs.TabPages.Remove(menuTab);
 
-            // TODO: Start a two player game. User vs User
-
             //Creates a new game and rules and writes the player turn to the console.
             createPits(sender, e);
-
-            // Labels which players turn it is by italicised letters
             
 
 
