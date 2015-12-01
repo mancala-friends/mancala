@@ -21,5 +21,12 @@ namespace Mancala
         {
             Dispose();
         }
+
+        private void distroLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            distroLink.LinkVisited = true;
+
+            System.Diagnostics.Process.Start("https://github.com/mancala-friends/mancala");
+        }
     }
 }

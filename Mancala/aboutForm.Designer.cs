@@ -93,6 +93,7 @@
             this.distroLink.TabIndex = 5;
             this.distroLink.TabStop = true;
             this.distroLink.Text = "https://github.com/mancala-friends/mancala";
+            this.distroLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.distroLink_LinkClicked);
             // 
             // aboutForm
             // 
