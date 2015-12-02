@@ -295,6 +295,8 @@ namespace Mancala
 
             // TODO: Start a two player game. User vs User
 
+            player2Label.Text = "Player 2";
+
             hasAI = false;
 
             //Creates a new game and rules and writes the player turn to the console.
