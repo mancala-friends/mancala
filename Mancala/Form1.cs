@@ -132,16 +132,18 @@ namespace Mancala
 
         private void render(GameState gameState)
         {
+
+            render(gameState.playerOne, 1);
+            render(gameState.playerTwo, 2);
+
             if (rules.getGamestate().isOver())
             {
-                gameOverScreen gameOverView = new gameOverScreen();
+                gameOverScreen gameOverView = new gameOverScreen(rules.getGamestate());
                 gameOverView.Show();
                 backButton.PerformClick();
                 return;
             }
 
-            render(gameState.playerOne, 1);
-            render(gameState.playerTwo, 2);
             if (gameState.currentPlayer == 1)
             {
                 player1Label.Font = new Font("Microsoft Sans Serif",26, FontStyle.Regular);
@@ -262,7 +264,7 @@ namespace Mancala
             mancalaTabs.SelectedTab = gameTab;
             mancalaTabs.TabPages.Remove(menuTab);
 
-            player2Label.Text = "AI";
+            player2Label.Text = "Player 2 (AI)";
             hasAI = true;
             createPits(sender, e);
 
