@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -120,6 +121,8 @@ namespace Mancala
 
         private void AIplay()
         {
+            this.Refresh();
+            Thread.Sleep(1000);
             Random random = new Random();
             while(rules.getGamestate().currentPlayer == 2 && !rules.getGamestate().isOver())
             {
