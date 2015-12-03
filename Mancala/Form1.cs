@@ -22,6 +22,8 @@ namespace Mancala
             mancalaTabs.TabPages.Remove(gameTab);
         }
 
+        private bool hasAI = false;
+
         private class Pit
         {
             public int Player { get; set; }
@@ -75,12 +77,6 @@ namespace Mancala
             {
                 rules.tryMove(pit.Location);
                 render(gameState);
-                if(gameState.isOver())
-                {
-                    gameOverScreen gameOverView = new gameOverScreen(gameState);
-                    gameOverView.Show();
-                    //backButton_Click(sender, e);
-                }
             }
         }
 
@@ -122,10 +118,32 @@ namespace Mancala
             render(rules.getGamestate());
         }
 
+        private void AIplay()
+        {
+            Random random = new Random();
+            while(rules.getGamestate().currentPlayer == 2 && !rules.getGamestate().isOver())
+            {
+                rules.tryMove(random.Next(6));
+            }
+
+            var gameState = rules.getGamestate();
+            render(gameState);
+        }
+
         private void render(GameState gameState)
         {
+
             render(gameState.playerOne, 1);
             render(gameState.playerTwo, 2);
+
+            if (rules.getGamestate().isOver())
+            {
+                gameOverScreen gameOverView = new gameOverScreen(rules.getGamestate());
+                gameOverView.Show();
+                backButton.PerformClick();
+                return;
+            }
+
             if (gameState.currentPlayer == 1)
             {
                 player1Label.Font = new Font("Microsoft Sans Serif",26, FontStyle.Regular);
@@ -140,6 +158,10 @@ namespace Mancala
                 player2Label.ForeColor = System.Drawing.Color.Gold;
                 player1Label.Font = new Font("Microsoft Sans Serif", 20, FontStyle.Regular);
                 player1Label.ForeColor = System.Drawing.Color.Black;
+                if (hasAI)
+                {
+                    AIplay();
+                }
             }
         }
 
@@ -242,6 +264,10 @@ namespace Mancala
             mancalaTabs.SelectedTab = gameTab;
             mancalaTabs.TabPages.Remove(menuTab);
 
+            player2Label.Text = "Player 2 (AI)";
+            hasAI = true;
+            createPits(sender, e);
+
             // TODO: Start a one player vs AI game
             createPits(sender, e);
 
@@ -268,6 +294,12 @@ namespace Mancala
             mancalaTabs.TabPages.Add(gameTab);
             mancalaTabs.SelectedTab = gameTab;
             mancalaTabs.TabPages.Remove(menuTab);
+
+            // TODO: Start a two player game. User vs User
+
+            player2Label.Text = "Player 2";
+
+            hasAI = false;
 
             //Creates a new game and rules and writes the player turn to the console.
             createPits(sender, e);
