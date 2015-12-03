@@ -144,6 +144,7 @@ namespace Mancala
                 gameOverScreen gameOverView = new gameOverScreen(rules.getGamestate());
                 gameOverView.Show();
                 backButton.PerformClick();
+                gameOverView.BringToFront();
                 return;
             }
 
