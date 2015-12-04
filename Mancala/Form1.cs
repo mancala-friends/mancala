@@ -119,6 +119,10 @@ namespace Mancala
             render(rules.getGamestate());
         }
 
+        /// <summary>
+        /// This is the logic for how our AI will work. 
+        /// This function allows for the AI to take 1 second before chosing a playable pit.
+        /// </summary>
         private void AIplay()
         {
             this.Refresh();
@@ -144,6 +148,7 @@ namespace Mancala
                 gameOverScreen gameOverView = new gameOverScreen(rules.getGamestate());
                 gameOverView.Show();
                 backButton.PerformClick();
+                gameOverView.BringToFront();
                 return;
             }
 
@@ -271,8 +276,7 @@ namespace Mancala
             hasAI = true;
             createPits(sender, e);
 
-            // TODO: Start a one player vs AI game
-            createPits(sender, e);
+//            createPits(sender, e);
 
         }
 
@@ -298,16 +302,12 @@ namespace Mancala
             mancalaTabs.SelectedTab = gameTab;
             mancalaTabs.TabPages.Remove(menuTab);
 
-            // TODO: Start a two player game. User vs User
-
             player2Label.Text = "Player 2";
 
             hasAI = false;
 
             //Creates a new game and rules and writes the player turn to the console.
             createPits(sender, e);
-
-            // Labels which players turn it is by italicised letters
             
 
 
@@ -356,7 +356,7 @@ namespace Mancala
         /// <param name="e"></param>
         private void instructionButton_Click(object sender, EventArgs e)
         {
-
+            // This function can be deleted unless wanted the instruction button to go somewhere else.
         }
 
 

@@ -12,11 +12,19 @@ namespace Mancala
 {
     public partial class gameOverScreen : Form
     {
+        /// <summary>
+        /// Constructor for the game over scree. This just initialized the form as was designed.
+        /// </summary>
         public gameOverScreen()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        ///  This sets up the game over screen as designed in the designer. Shows Both player's scores
+        ///  as well as who has won the game.
+        /// </summary>
+        /// <param name="game"></param>
         public gameOverScreen(GameState game)
         {
             InitializeComponent();
@@ -29,6 +37,8 @@ namespace Mancala
             player1ScoreNumLabel.Text = p1;
             player2ScoreNumLabel.Text = p2;
 
+
+            // Logic to determine how to show which player has won.
             if(p1Score > p2Score)
             {
                 winLoseLabel.Text = "Player 1 Wins!";
