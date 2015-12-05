@@ -41,5 +41,17 @@ namespace Mancala
 
             System.Diagnostics.Process.Start("https://github.com/mancala-friends/mancala");
         }
+
+        /// <summary>
+        /// This function allows the user to download the zip file of Mancala from the github site.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void downloadZip_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            downloadZip.LinkVisited = true;
+
+            System.Diagnostics.Process.Start("https://github.com/mancala-friends/mancala/releases/download/1.0.0/Mancala_1.0.0.zip");
+        }
     }
 }
