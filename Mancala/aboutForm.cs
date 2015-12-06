@@ -51,7 +51,7 @@ namespace Mancala
         {
             downloadZip.LinkVisited = true;
 
-            System.Diagnostics.Process.Start("https://github.com/mancala-friends/mancala/releases/download/1.0.0/Mancala_1.0.0.zip");
+            System.Diagnostics.Process.Start("https://github.com/mancala-friends/mancala/releases");
         }
     }
 }
