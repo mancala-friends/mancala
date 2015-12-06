@@ -178,7 +178,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(486, 504);
+            this.exitButton.Location = new System.Drawing.Point(293, 504);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(184, 23);
             this.exitButton.TabIndex = 5;
@@ -198,7 +198,7 @@
             // 
             // instructionButton
             // 
-            this.instructionButton.Location = new System.Drawing.Point(486, 394);
+            this.instructionButton.Location = new System.Drawing.Point(103, 446);
             this.instructionButton.Name = "instructionButton";
             this.instructionButton.Size = new System.Drawing.Size(184, 23);
             this.instructionButton.TabIndex = 3;
@@ -214,11 +214,12 @@
             this.networkButton.TabIndex = 2;
             this.networkButton.Text = "Networked Game";
             this.networkButton.UseVisualStyleBackColor = true;
+            this.networkButton.Visible = false;
             this.networkButton.Click += new System.EventHandler(this.networkButton_Click);
             // 
             // twoPlayerButton
             // 
-            this.twoPlayerButton.Location = new System.Drawing.Point(103, 446);
+            this.twoPlayerButton.Location = new System.Drawing.Point(486, 394);
             this.twoPlayerButton.Name = "twoPlayerButton";
             this.twoPlayerButton.Size = new System.Drawing.Size(184, 23);
             this.twoPlayerButton.TabIndex = 1;

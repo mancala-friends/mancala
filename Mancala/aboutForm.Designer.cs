@@ -35,6 +35,8 @@
             this.versionLabel = new System.Windows.Forms.Label();
             this.distroDisplayLabel = new System.Windows.Forms.Label();
             this.distroLink = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.downloadZip = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -95,11 +97,33 @@
             this.distroLink.Text = "https://github.com/mancala-friends/mancala";
             this.distroLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.distroLink_LinkClicked);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 246);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Downloable Link: ";
+            // 
+            // downloadZip
+            // 
+            this.downloadZip.AutoSize = true;
+            this.downloadZip.Location = new System.Drawing.Point(156, 246);
+            this.downloadZip.Name = "downloadZip";
+            this.downloadZip.Size = new System.Drawing.Size(118, 13);
+            this.downloadZip.TabIndex = 7;
+            this.downloadZip.TabStop = true;
+            this.downloadZip.Text = "Download Zip File Here";
+            this.downloadZip.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadZip_LinkClicked);
+            // 
             // aboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 311);
+            this.Controls.Add(this.downloadZip);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.distroLink);
             this.Controls.Add(this.distroDisplayLabel);
             this.Controls.Add(this.versionLabel);
@@ -121,5 +145,7 @@
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label distroDisplayLabel;
         private System.Windows.Forms.LinkLabel distroLink;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel downloadZip;
     }
 }
